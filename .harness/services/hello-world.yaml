@@ -16,7 +16,7 @@ service:
                 spec:
                   connectorRef: githubconnector
                   gitFetchType: Branch
-                  folderPath: /helm/hello-world
+                  folderPath: helm/hello-world
                   branch: main
               subChartPath: ""
               valuesPaths:
