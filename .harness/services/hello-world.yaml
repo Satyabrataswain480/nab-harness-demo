@@ -24,6 +24,19 @@ service:
               enableDeclarativeRollback: false
               helmVersion: V3
               fetchHelmChartMetadata: false
+        - manifest:
+            identifier: dev_values_override
+            type: Values
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: githubconnector
+                  gitFetchType: Branch
+                  paths:
+                    - helm/hello-world/overrides/dev-values.yaml
+                  branch: main
+              optionalValuesYaml: false
       artifacts:
         primary:
           primaryArtifactRef: hello_world_image
