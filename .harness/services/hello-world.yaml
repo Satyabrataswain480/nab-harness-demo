@@ -1,0 +1,5 @@
+service:
+  name: hello-world
+  identifier: helloworld
+  orgIdentifier: default
+  projectIdentifier: default_project
