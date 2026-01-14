@@ -23,14 +23,13 @@ service:
               skipResourceVersioning: false
               enableDeclarativeRollback: false
               optionalValuesYaml: false
-
       artifacts:
         primary:
           primaryArtifactRef: hello_world_image
           sources:
-            - identifier: hello_world_image
-              type: DockerRegistry
-              spec:
+            - spec:
                 connectorRef: acrdockerconnector
-                imagePath: harnessacr123.azurecr.io/hello-world
+                imagePath: hello-world
                 tag: <+input>
+              identifier: hello_world_image
+              type: DockerRegistry
