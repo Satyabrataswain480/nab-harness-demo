@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: harnessacr123.azurecr.io/hello-world:<+artifacts.primary.tag>
+          image: harnessacr123.azurecr.io/hello-world
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
