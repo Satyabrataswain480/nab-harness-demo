@@ -16,7 +16,7 @@ service:
                   connectorRef: githubconnector
                   gitFetchType: Branch
                   paths:
-                    - k8s/
+                    - .
                   branch: main
               skipResourceVersioning: false
               enableDeclarativeRollback: false
