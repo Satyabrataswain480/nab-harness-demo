@@ -1,0 +1,35 @@
+service:
+  name: hello-world
+  identifier: helloworld
+  orgIdentifier: default
+  projectIdentifier: default_project
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: helloworldmanifest
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: githubconnector
+                  gitFetchType: Branch
+                  paths:
+                    - k8s/deployment.yaml
+                    - k8s/service.yaml
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              optionalValuesYaml: false
+      artifacts:
+        primary:
+          primaryArtifactRef: hello_world_image
+          sources:
+            - spec:
+                connectorRef: acrdockerconnector
+                imagePath: hello-world
+                tag: <+input>
+              identifier: hello_world_image
+              type: DockerRegistry
