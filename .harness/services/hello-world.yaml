@@ -16,7 +16,8 @@ service:
                   connectorRef: githubconnector
                   gitFetchType: Branch
                   paths:
-                    - .
+                    - k8s/deployment.yaml
+                    - k8s/service.yaml
                   branch: main
               skipResourceVersioning: false
               enableDeclarativeRollback: false
