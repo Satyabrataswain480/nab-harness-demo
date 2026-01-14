@@ -1,6 +1,7 @@
 image:
   repository: harnessacr123.azurecr.io/hello-world
   tag: ""   # Harness will inject this
+  pullPolicy: IfNotPresent
 
 replicaCount: 1
 
