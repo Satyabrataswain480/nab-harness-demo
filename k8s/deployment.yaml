@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: <+artifacts.primary.image>
+          image: <+artifact.image>
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
