@@ -1,0 +1,29 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: k8srequiredlabelsresources
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRequiredLabelsResources
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8srequiredlabelsresources
+
+        violation[{"msg": msg}] {
+          input.review.kind.kind == "Deployment"
+          not input.review.object.metadata.labels
+          msg := "OPA Policy Violation [REQUIRED_LABELS]: Deployment must contain at least one label"
+        }
+
+        violation[{"msg": msg}] {
+          input.review.kind.kind == "Deployment"
+          container := input.review.object.spec.template.spec.containers[_]
+          not container.resources.limits
+          msg := sprintf(
+            "OPA Policy Violation [RESOURCE_LIMITS]: Container '%s' must define resource limits",
+            [container.name]
+          )
+        }
