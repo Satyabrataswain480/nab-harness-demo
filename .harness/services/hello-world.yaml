@@ -8,21 +8,24 @@ service:
     spec:
       manifests:
         - manifest:
-            identifier: helloworldmanifest
-            type: K8sManifest
+            identifier: helloworldhelm
+            type: HelmChart
             spec:
               store:
                 type: Github
                 spec:
                   connectorRef: githubconnector
                   gitFetchType: Branch
-                  paths:
-                    - k8s/deployment.yaml
-                    - k8s/service.yaml
+                  folderPath: /helm/hello-world
                   branch: main
+              subChartPath: ""
+              valuesPaths:
+                - values.yaml
+              optionalValuesYaml: false
               skipResourceVersioning: false
               enableDeclarativeRollback: false
-              optionalValuesYaml: false
+              helmVersion: V3
+              fetchHelmChartMetadata: false
       artifacts:
         primary:
           primaryArtifactRef: hello_world_image
