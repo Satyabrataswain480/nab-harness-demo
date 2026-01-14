@@ -19,8 +19,6 @@ service:
                   folderPath: helm/hello-world
                   branch: main
               subChartPath: ""
-              valuesPaths:
-                - values.yaml
               optionalValuesYaml: false
               skipResourceVersioning: false
               enableDeclarativeRollback: false
