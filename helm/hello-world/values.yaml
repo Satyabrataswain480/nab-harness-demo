@@ -1,0 +1,18 @@
+image:
+  repository: harnessacr123.azurecr.io/hello-world
+  tag: ""   # Harness will inject this
+
+replicaCount: 1
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "250m"
+    memory: "256Mi"
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
