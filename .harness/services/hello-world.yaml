@@ -29,7 +29,7 @@ service:
           sources:
             - spec:
                 connectorRef: acrdockerconnector
-                imagePath: hello-world
+                imagePath: harnessacr123.azurecr.io/hello-world
                 tag: <+input>
               identifier: hello_world_image
               type: DockerRegistry
