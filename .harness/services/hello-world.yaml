@@ -4,6 +4,7 @@ service:
   orgIdentifier: default
   projectIdentifier: default_project
   serviceDefinition:
+    type: Kubernetes
     spec:
       manifests:
         - manifest:
@@ -22,15 +23,14 @@ service:
               skipResourceVersioning: false
               enableDeclarativeRollback: false
               optionalValuesYaml: false
+
       artifacts:
         primary:
-          primaryArtifactRef: <+input>
+          primaryArtifactRef: hello_world_image
           sources:
-            - spec:
+            - identifier: hello_world_image
+              type: DockerRegistry
+              spec:
                 connectorRef: acrdockerconnector
                 imagePath: harnessacr123.azurecr.io/hello-world
                 tag: <+input>
-                digest: ""
-              identifier: hello_world_image
-              type: DockerRegistry
-    type: Kubernetes
