@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bad-labels
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bad-labels
+  template:
+    metadata:
+      labels:
+        app: bad-labels
+    spec:
+      containers:
+        - name: app
+          image: nginx:1.25
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "128Mi"
